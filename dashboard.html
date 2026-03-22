@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crime Awareness Portal</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <span>Pragati Engineering College</span>
+        <h1>Crime Awareness Creator</h1>
+        <nav>
+            <a href="#" id="backBtn">Back</a>
+            <span id="userInfo"></span>
+            <a href="#" id="logoutBtn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Welcome to the Dashboard</h2>
+            <p>Select a category to explore crime awareness and ethics information.</p>
+            <div class="card-container">
+                <div class="card" onclick="goToPage('student.html')">
+                    <h3>Crimes by Student</h3>
+                    <p>Explore misconduct specific to students.</p>
+                </div>
+                <div class="card" onclick="goToPage('faculty.html')">
+                    <h3>Crimes by Faculty</h3>
+                    <p>Learn about professional misconduct by faculty.</p>
+                </div>
+                <div class="card" onclick="goToPage('both.html')">
+                    <h3>Crimes by Both</h3>
+                    <p>Shared crimes applicable to students and faculty.</p>
+                </div>
+                <div class="card" onclick="goToPage('committees.html')">
+                    <h3>Committees Handling These Crimes</h3>
+                    <p>Information on internal authorities and committees.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Anti-Ragging Cell</a>
+            <a href="#">Emergency Contact</a>
+            <a href="#">University Guidelines</a>
+        </div>
+        <p>&copy; 2024 Pragati College. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if user is logged in
+        const userRole = localStorage.getItem('userRole');
+        const userId = localStorage.getItem('userId');
+        if (!userRole) {
+            window.location.href = 'login.html';
+        } else {
+            // Display user info
+            document.getElementById('userInfo').textContent = `Welcome, ${userRole} (${userId})`;
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+        });
+
+        // Back to opening page functionality
+        document.getElementById('backBtn').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Crimes - Crime Awareness Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <span>Pragati Engineering College</span>
+        <h1>Crime Awareness Creator</h1>
+        <nav>
+            <span id="userInfo"></span>
+            <a href="dashboard.html">Back to Dashboard</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="crime-section">
+            <h2>Crimes by Faculty</h2>
+            <p>Click on a crime to learn more about its legal implications and consequences.</p>
+            <div class="buttons">
+                <button class="crime-btn purple" data-crime="sexualHarassmentFaculty"><h3>Sexual Harassment</h3><p>
+                    Misconduct involving inappropriate behavior
+                </p></button>
+                <button class="crime-btn pink" data-crime="bribery"><h3>Bribery/Corruption</h3><p>
+                    Accepting benefits for unfair advantage
+                </p></button>
+                <button class="crime-btn orange" data-crime="fraud"><h3>Academic Fraud</h3><p>
+                    Manipulating academic records or research
+                </p></button>
+                <button class="crime-btn magenta" data-crime="discrimination"><h3>Discrimination</h3><p>Unfair treatment based on identity
+
+                </p></button>
+                <button class="crime-btn green" data-crime="authority"><h3>Misuse of Authority</h3><p>
+                    Abusing power or position
+                
+                </p></button>
+                <button class="crime-btn purple" data-crime="leakage"><h3>Exam Paper Leakage</h3><p>
+                    Unauthorized sharing of exam content
+                </p></button>
+            </div>
+            <div id="contentBox" class="content-box"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Anti-Ragging Cell</a>
+            <a href="#">Emergency Contact</a>
+            <a href="#">University Guidelines</a>
+        </div>
+        <p>&copy; 2024 Pragati College. All rights reserved.</p>
+    </footer>
+
+    <script src="js/content.js"></script>
+    <script>
+        // Check if user is logged in
+        const userRole = localStorage.getItem('userRole');
+        const userId = localStorage.getItem('userId');
+        if (!userRole) {
+            window.location.href = 'login.html';
+        } else {
+            // Display user info
+            document.getElementById('userInfo').textContent = `${userRole} (${userId})`;
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

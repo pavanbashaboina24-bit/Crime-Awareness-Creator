@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Crime Awareness Portal</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+            <span>Pragati Engineering College</span>
+        </div>
+        <h1>Crime Awareness Creator - Admin</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-dashboard">
+            <h2>Admin Dashboard</h2>
+            <p>Manage reports, view analytics, and oversee disciplinary actions.</p>
+            <div class="card-container">
+                <div class="card" onclick="showSection('reports')">
+                    <h3>View Reports</h3>
+                    <p>Review submitted misconduct reports.</p>
+                </div>
+                <div class="card" onclick="showSection('analytics')">
+                    <h3>Analytics</h3>
+                    <p>View trends and statistics on violations.</p>
+                </div>
+                <div class="card" onclick="showSection('actions')">
+                    <h3>Action System</h3>
+                    <p>Assign punishments and manage cases.</p>
+                </div>
+            </div>
+
+            <div id="reportsSection" class="admin-section" style="display: none;">
+                <h3>Submitted Reports</h3>
+                <div id="reportsList"></div>
+            </div>
+
+            <div id="analyticsSection" class="admin-section" style="display: none;">
+                <h3>Analytics Dashboard</h3>
+                <p>Violation trends and statistics will be displayed here.</p>
+                <div class="analytics-placeholder">
+                    <p>Total Reports: <span id="totalReports">0</span></p>
+                    <p>Pending: <span id="pendingReports">0</span></p>
+                    <p>Resolved: <span id="resolvedReports">0</span></p>
+                </div>
+            </div>
+
+            <div id="actionsSection" class="admin-section" style="display: none;">
+                <h3>Action System</h3>
+                <p>Manage disciplinary actions here.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Anti-Ragging Cell</a>
+            <a href="#">Emergency Contact</a>
+            <a href="#">University Guidelines</a>
+        </div>
+        <p>&copy; 2024 Pragati College. All rights reserved.</p>
+    </footer>
+
+    <script src="js/admin.js"></script>
+    <script>
+        // Check if user is logged in and is admin
+        const userRole = localStorage.getItem('userRole');
+        if (!userRole || userRole !== 'admin') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

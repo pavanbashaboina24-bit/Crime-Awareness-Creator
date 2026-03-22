@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Crimes - Crime Awareness Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <span>Pragati Engineering College</span>
+        <h1>Crime Awareness Creator</h1>
+        <nav>
+            <span id="userInfo"></span>
+            <a href="dashboard.html">Back to Dashboard</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="crime-section">
+            <h2>Crimes by Students</h2>
+            <p>Click on a crime to learn more about its legal implications and consequences.</p>
+            <div class="buttons">
+                <button class="crime-btn purple" data-crime="ragging"><h3>Ragging</h3>
+                    <p>Harassing or bullying juniors in any form</p>
+                </button>
+                <button class="crime-btn pink" data-crime="drug"><h3>Drug Use/Distribution</h3>
+                    <p>Possessing or supplying illegal substances</p>
+                </button>
+                <button class="crime-btn orange" data-crime="violence"><h3>Physical Violence</h3>
+                    <p>Causing harm through force or aggression</p>
+                </button>
+                <button class="crime-btn magenta" data-crime="cyberbullying"><h3>Cyberbullying</h3>
+                    <p>Harassing others using digital platforms</p>
+                </button>
+                <button class="crime-btn green" data-crime="cheating"><h3>Exam Cheating</h3>
+                    <p>Using unfair means in academic evaluations</p>
+                </button>
+                <button class="crime-btn purple" data-crime="theft"><h3>Theft</h3>
+                    <p>Stealing another person’s property</p>
+                </button>
+                <button class="crime-btn pink" data-crime="harassment"><h3>Sexual Harassment</h3>
+                    <p>Unwanted sexual behavior or advances</p>
+                </button>
+                <button class="crime-btn orange" data-crime="vandalism"><h3>Vandalism</h3>
+                    <p>Damaging college or public property</p>
+                </button>
+            </div>
+            <div id="contentBox" class="content-box"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Anti-Ragging Cell</a>
+            <a href="#">Emergency Contact</a>
+            <a href="#">University Guidelines</a>
+        </div>
+        <p>&copy; 2024 Pragati College. All rights reserved.</p>
+    </footer>
+
+    <script src="js/content.js"></script>
+    <script>
+        // Check if user is logged in
+        const userRole = localStorage.getItem('userRole');
+        const userId = localStorage.getItem('userId');
+        if (!userRole) {
+            window.location.href = 'login.html';
+        } else {
+            // Display user info
+            document.getElementById('userInfo').textContent = `${userRole} (${userId})`;
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userId');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
